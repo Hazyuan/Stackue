@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackue</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-row">
+        <h1 class="logo">Stackue</h1>
+        <div class="header-actions">
+          <button class="icon-btn" id="snapshot-btn" title="保存当前标签页快照">&#128247;</button>
+          <button class="icon-btn" id="settings-btn" title="设置">&#9881;</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Settings Panel (hidden by default) -->
+    <div class="settings-panel" id="settings-panel" style="display:none;">
+      <div class="setting-row">
+        <span class="setting-label">自动快照</span>
+        <label class="toggle">
+          <input type="checkbox" id="auto-snapshot-toggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="setting-row" id="snapshot-interval-row">
+        <span class="setting-label">快照间隔 (分钟)</span>
+        <select id="snapshot-interval">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+      <div class="setting-section-title">标签管理</div>
+      <div class="tag-manager" id="tag-manager">
+        <div class="tag-input-row">
+          <input type="text" id="new-tag-input" placeholder="新建标签..." maxlength="12">
+          <input type="color" id="new-tag-color" value="#8b5cf6" title="选择颜色">
+          <button class="icon-btn small" id="add-tag-btn" title="添加">+</button>
+        </div>
+        <div class="tag-list" id="tag-list"></div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="search-input" placeholder="搜索标题、备注或URL...">
+      <button class="search-clear" id="search-clear" style="display:none;">&#10005;</button>
+    </div>
+
+    <!-- Tag Filter -->
+    <div class="tag-filter" id="tag-filter" style="display:none;"></div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <textarea id="note-input" placeholder="添加备注：我正在做什么..." rows="2"></textarea>
+      <div class="input-meta-row">
+        <div class="input-tags" id="input-tags"></div>
+        <select id="input-priority" class="priority-select" title="优先级">
+          <option value="">无优先级</option>
+          <option value="high">&#128308; 高</option>
+          <option value="medium">&#128992; 中</option>
+          <option value="low">&#128309; 低</option>
+        </select>
+      </div>
+      <div class="push-row">
+        <select id="push-position" class="push-position-select" title="推入位置">
+          <option value="first">推到首位</option>
+          <option value="last">推到末位</option>
+        </select>
+        <button id="push-btn" class="action-btn primary">推入当前页</button>
+        <button id="push-close-btn" class="action-btn outline" title="保存并关闭标签页，释放内存">推入并关闭</button>
+      </div>
+    </div>
+
+    <!-- View Tabs -->
+    <div class="view-tabs">
+      <button class="view-tab active" data-view="active">
+        待处理 <span class="badge" id="active-count">0</span>
+      </button>
+      <button class="view-tab" data-view="workspaces">
+        工作区 <span class="badge" id="workspace-count">0</span>
+      </button>
+      <button class="view-tab" data-view="done">
+        已完成 <span class="badge" id="done-count">0</span>
+      </button>
+      <button class="view-tab" data-view="snapshots">
+        快照 <span class="badge" id="snapshot-count">0</span>
+      </button>
+      <button class="view-tab" data-view="archive">
+        归档 <span class="badge" id="archive-count">0</span>
+      </button>
+    </div>
+
+    <!-- List Area -->
+    <div class="list-area" id="list-area"></div>
+
+    <!-- Selection Bar (when items are checked) -->
+    <div class="selection-bar" id="selection-bar" style="display:none;">
+      <span id="selection-count">已选 0 项</span>
+      <button class="action-btn primary small" id="create-workspace-btn">创建工作区</button>
+      <button class="action-btn outline small" id="cancel-selection-btn">取消</button>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar" id="bottom-bar" style="display:none;">
+      <div class="pop-row">
+        <button id="pop-first-btn" class="action-btn outline pop-btn">弹出首项 &#8593;</button>
+        <button id="pop-last-btn" class="action-btn outline pop-btn">弹出末项 &#8595;</button>
+      </div>
+    </div>
+
+    <!-- Workspace Create Dialog -->
+    <div class="dialog-overlay" id="ws-dialog" style="display:none;">
+      <div class="dialog">
+        <div class="dialog-title">创建工作区</div>
+        <input type="text" id="ws-name-input" class="dialog-input" placeholder="工作区名称（如：调研React状态管理）" maxlength="50">
+        <textarea id="ws-note-input" class="dialog-input" placeholder="备注：这个工作区的目标是什么..." rows="3"></textarea>
+        <div class="dialog-actions">
+          <button class="action-btn outline small" id="ws-cancel-btn">取消</button>
+          <button class="action-btn primary small" id="ws-confirm-btn">创建</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
