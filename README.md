@@ -1,39 +1,45 @@
+<div align="center">
+
 # Stackue
 
-一个 Chrome 侧边栏扩展，用栈/队列的方式管理标签页，帮助你在频繁的任务切换中保持专注。
+**Stack your tabs. Queue your focus.**
 
-## 功能
+A Chrome Side Panel extension for managing tabs like a stack/queue — built for people who juggle too many tabs and need to stay focused.
 
-- **推入/弹出** — 将当前标签页推入列表首位或末位，随时弹出跳转
-- **智能标题提取** — 自动抓取页面 og:title、h1、首段文字等，区分同名标签页（如 Gemini 多窗口）
-- **备注 & 标签** — 每条记录可添加文字备注和自定义彩色标签
-- **优先级** — 高/中/低三级优先级标记
-- **拖拽排序** — 拖动卡片调整顺序
-- **工作区** — 多选标签页打组，统一挂起/恢复/解散
-- **快照** — 手动或自动保存当前所有标签页状态
-- **归档 & 导出** — 快照可按日期归档，支持 JSON 导出/导入
-- **搜索 & 筛选** — 按标题、备注、URL 搜索，按标签筛选
-- **推入并关闭** — 保存标签页信息后关闭，释放内存
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/) [![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/intro/) [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6?style=flat-square)](LICENSE)
 
-## 安装
+</div>
 
-1. 克隆或下载本仓库
-2. 打开 Chrome，进入 `chrome://extensions/`
-3. 开启「开发者模式」
-4. 点击「加载已解压的扩展程序」，选择本项目文件夹
-5. 点击扩展图标打开侧边栏
+---
 
-## 技术栈
+## Why Stackue?
 
-- Chrome Extension Manifest V3
-- Chrome Side Panel API
-- Chrome Storage API（本地持久化）
-- Chrome Scripting API（内容脚本注入）
-- 原生 HTML / CSS / JavaScript，无外部依赖
+When you're deep in research, debugging, or just browsing — tabs pile up fast. You lose track of what you were doing, where you left off, and what matters.
 
-## 截图
+Stackue treats your tabs like a **stack** (push/pop) so you can save context, switch focus, and come back without losing your flow.
 
-> 安装后点击扩展图标即可体验
+## Features
+
+| | Feature | Description |
+|---|---|---|
+| **Push / Pop** | Save any tab to the top or bottom of your list, pop it back when you're ready |
+| **Smart Titles** | Auto-extracts page content (og:title, headings, first paragraph) to distinguish identical-looking tabs |
+| **Notes & Tags** | Attach notes and color-coded tags to every saved tab |
+| **Priority** | Mark items as high / medium / low priority |
+| **Drag & Drop** | Reorder your list by dragging cards |
+| **Workspaces** | Group related tabs together — suspend, restore, or dissolve as a unit |
+| **Snapshots** | Capture all open tabs at a point in time (manual or auto) |
+| **Archive & Export** | Archive snapshots by date, export/import as JSON |
+| **Search & Filter** | Full-text search across titles, notes, and URLs; filter by tag |
+| **Push & Close** | Save a tab and close it immediately to free memory |
+
+## Getting Started
+
+
+1. Open `chrome://extensions/`
+2. Enable **Developer mode**
+3. Click **Load unpacked** and select the `stackue` folder
+4. Click the Stackue icon to open the side panel
 
 ## License
 
